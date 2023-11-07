@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://be3rqhpykt7k3"]
+
+[ext_resource type="Texture2D" uid="uid://itfb7kdoy0nk" path="res://assets/bochi_haha.png" id="1_34kjh"]
+[ext_resource type="Script" path="res://scenes/pet.gd" id="1_mchbf"]
+[ext_resource type="Script" path="res://scenes/desktop_assistant.gd" id="1_qimpd"]
+[ext_resource type="PackedScene" uid="uid://cvgg41oimyeus" path="res://scenes/components/draggable_component.tscn" id="2_jwxly"]
+[ext_resource type="Texture2D" uid="uid://b644w6p8xg2vu" path="res://icon.svg" id="3_wr5ad"]
+
+[node name="DesktopAssistant" type="Node"]
+script = ExtResource("1_qimpd")
+
+[node name="Pet" type="Node2D" parent="."]
+position = Vector2(944, 375)
+script = ExtResource("1_mchbf")
+
+[node name="DraggableComponent" parent="Pet" instance=ExtResource("2_jwxly")]
+
+[node name="Sprite" type="Sprite2D" parent="Pet"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_34kjh")
+centered = false
+
+[node name="Test" type="Node2D" parent="."]
+position = Vector2(538, 271)
+
+[node name="DraggableComponent" parent="Test" instance=ExtResource("2_jwxly")]
+
+[node name="Sprite" type="Sprite2D" parent="Test"]
+texture = ExtResource("3_wr5ad")
+centered = false
+
+[node name="Test2" type="Node2D" parent="."]
+
+[node name="DraggableComponent" parent="Test2" instance=ExtResource("2_jwxly")]
+
+[node name="Sprite" type="Sprite2D" parent="Test2"]
+texture = ExtResource("3_wr5ad")
+centered = false
