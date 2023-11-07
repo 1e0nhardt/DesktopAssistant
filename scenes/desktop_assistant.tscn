@@ -21,11 +21,12 @@ texture = ExtResource("1_34kjh")
 centered = false
 
 [node name="Test" type="Node2D" parent="."]
-position = Vector2(538, 271)
+position = Vector2(500, 321)
 
 [node name="DraggableComponent" parent="Test" instance=ExtResource("2_jwxly")]
 
 [node name="Sprite" type="Sprite2D" parent="Test"]
+position = Vector2(169, 2)
 texture = ExtResource("3_wr5ad")
 centered = false
 
@@ -34,5 +35,58 @@ centered = false
 [node name="DraggableComponent" parent="Test2" instance=ExtResource("2_jwxly")]
 
 [node name="Sprite" type="Sprite2D" parent="Test2"]
+position = Vector2(30, 144)
+texture = ExtResource("3_wr5ad")
+centered = false
+
+[node name="Test3" type="Node2D" parent="."]
+position = Vector2(422, 93)
+
+[node name="DraggableComponent" parent="Test3" instance=ExtResource("2_jwxly")]
+
+[node name="Sprite" type="Sprite2D" parent="Test3"]
+position = Vector2(140, 16)
+texture = ExtResource("3_wr5ad")
+centered = false
+
+[node name="Test4" type="Node2D" parent="."]
+visible = false
+position = Vector2(168, 319)
+
+[node name="DraggableComponent" parent="Test4" instance=ExtResource("2_jwxly")]
+
+[node name="Sprite" type="Sprite2D" parent="Test4"]
+position = Vector2(-5, 67)
+texture = ExtResource("3_wr5ad")
+centered = false
+
+[node name="Test5" type="Node2D" parent="."]
+visible = false
+position = Vector2(-21, 212)
+
+[node name="DraggableComponent" parent="Test5" instance=ExtResource("2_jwxly")]
+
+[node name="Sprite" type="Sprite2D" parent="Test5"]
+position = Vector2(282, -22)
+texture = ExtResource("3_wr5ad")
+centered = false
+
+[node name="Test6" type="Node2D" parent="."]
+visible = false
+position = Vector2(387, 481)
+
+[node name="DraggableComponent" parent="Test6" instance=ExtResource("2_jwxly")]
+
+[node name="Sprite" type="Sprite2D" parent="Test6"]
+texture = ExtResource("3_wr5ad")
+centered = false
+
+[node name="Test7" type="Node2D" parent="."]
+visible = false
+position = Vector2(844, 111)
+
+[node name="DraggableComponent" parent="Test7" instance=ExtResource("2_jwxly")]
+
+[node name="Sprite" type="Sprite2D" parent="Test7"]
 texture = ExtResource("3_wr5ad")
 centered = false
