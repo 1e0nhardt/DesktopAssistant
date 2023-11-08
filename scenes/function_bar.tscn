@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://dekdo7vpyjvey"]
+
+[ext_resource type="Script" path="res://scenes/function_bar.gd" id="1_2vxni"]
+[ext_resource type="Texture2D" uid="uid://b644w6p8xg2vu" path="res://icon.svg" id="1_l0gco"]
+
+[node name="FunctionBar" type="VBoxContainer"]
+custom_minimum_size = Vector2(24, 200)
+theme_override_constants/separation = 1
+script = ExtResource("1_2vxni")
+
+[node name="SaySomething" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_l0gco")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TodoList" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_l0gco")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Kanban" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_l0gco")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MusicPlayer" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_l0gco")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Clock" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_l0gco")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Chat" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_l0gco")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Hide" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_l0gco")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Quit" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("1_l0gco")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="TodoList" to="." method="_on_todo_list_pressed"]

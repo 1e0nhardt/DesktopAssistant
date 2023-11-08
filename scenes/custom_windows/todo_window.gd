@@ -1,3 +1,4 @@
+class_name TodoWidget
 extends "res://scenes/custom_windows/main_window.gd"
 
 # @export var todo_item: PackedScene
@@ -11,6 +12,8 @@ var todo_nodes = []
 
 
 func _ready():
+    # 居中显示
+    global_position = (get_viewport_rect().size - size) * 0.5
     update_todos()
 
 
@@ -38,6 +41,11 @@ func add_item_to_group(data, group_node: Node):
     todo_nodes.append(todo_item_instance)
 
 
+func close():
+    Global.todo_list.serialize()
+    queue_free()
+
+
 func _on_line_edit_text_submitted(new_text: String):
     Logger.info(new_text)
     Global.todo_list.add_item(new_text)
@@ -47,5 +55,4 @@ func _on_line_edit_text_submitted(new_text: String):
 
 
 func _on_close_button_pressed():
-    Global.todo_list.serialize()
-    queue_free()
+    close()

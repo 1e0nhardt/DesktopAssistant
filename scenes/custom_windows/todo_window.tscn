@@ -175,7 +175,7 @@ mouse_filter = 2
 script = ExtResource("4_far2n")
 
 [node name="Bottom" type="Control" parent="Handles"]
-custom_minimum_size = Vector2(0, 5)
+custom_minimum_size = Vector2(0, 6)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -186,7 +186,7 @@ grow_vertical = 0
 mouse_default_cursor_shape = 9
 
 [node name="Right" type="Control" parent="Handles"]
-custom_minimum_size = Vector2(5, 0)
+custom_minimum_size = Vector2(6, 0)
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -197,7 +197,7 @@ grow_vertical = 2
 mouse_default_cursor_shape = 10
 
 [node name="Corner" type="Control" parent="Handles"]
-custom_minimum_size = Vector2(8, 8)
+custom_minimum_size = Vector2(9, 9)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
