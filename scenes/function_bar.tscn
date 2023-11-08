@@ -65,3 +65,4 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [connection signal="pressed" from="TodoList" to="." method="_on_todo_list_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

@@ -29,17 +29,17 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 
 [node name="TopBar" type="PanelContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h1dx5")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TopBar"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 1
+theme_override_constants/separation = 6
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/TopBar/HBoxContainer"]
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("3_c25mk")
@@ -47,10 +47,10 @@ expand_mode = 1
 
 [node name="WindowTitle" type="Label" parent="VBoxContainer/TopBar/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 16
 text = "Simple Video Editor"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -62,7 +62,7 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="CloseButton" type="TextureButton" parent="VBoxContainer/TopBar/HBoxContainer"]
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("3_c25mk")
 ignore_texture_size = true

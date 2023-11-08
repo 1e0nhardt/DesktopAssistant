@@ -6,7 +6,7 @@ var item_data: Global.TodoItem
 
 
 func set_data(data: Global.TodoItem):
-    Logger.debug("Data", data)
+    # Logger.debug("Data", data)
     item_data = data
     todo_label.text = data.content
 

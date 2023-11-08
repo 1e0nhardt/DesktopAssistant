@@ -28,3 +28,9 @@ func _on_todo_list_pressed():
         todo_widget_instance.close()
         todo_widget_activated = false
 
+
+func _on_quit_pressed():
+    if todo_widget_activated:
+        todo_widget_instance.close()
+
+    get_tree().quit()

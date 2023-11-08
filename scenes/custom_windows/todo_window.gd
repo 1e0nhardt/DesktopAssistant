@@ -12,6 +12,7 @@ var todo_nodes = []
 
 
 func _ready():
+    super()
     # 居中显示
     global_position = (get_viewport_rect().size - size) * 0.5
     update_todos()
