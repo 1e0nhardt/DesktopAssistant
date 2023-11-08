@@ -3,7 +3,7 @@ extends Control
 @onready var bottom_resize_control : Control = $Bottom
 @onready var right_resize_control : Control = $Right
 @onready var corner_resize_control : Control = $Corner
-@onready var draggable_component = owner.find_child("DraggableComponent")
+@onready var draggable_component = get_parent().find_child("DraggableComponent")
 
 var resizing_node : Control
 var resizing_flag := false:
@@ -18,9 +18,9 @@ var resizing_flag := false:
 func _process(_delta):
     if resizing_flag:
         if resizing_node in [bottom_resize_control, corner_resize_control]:
-            owner.size.y = int(get_global_mouse_position().y - owner.global_position.y)
+            get_parent().size.y = int(get_global_mouse_position().y - get_parent().global_position.y)
         if resizing_node in [right_resize_control, corner_resize_control]:
-            owner.size.x = int(get_global_mouse_position().x - owner.global_position.x)
+            get_parent().size.x = int(get_global_mouse_position().x - get_parent().global_position.x)
         draggable_component.update_nopass_area()
 
 
