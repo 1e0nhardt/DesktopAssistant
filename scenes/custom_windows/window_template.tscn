@@ -1,0 +1,151 @@
+[gd_scene load_steps=9 format=3 uid="uid://bqtjbtgy156r5"]
+
+[ext_resource type="Script" path="res://scenes/custom_windows/main_window.gd" id="1_uw1pl"]
+[ext_resource type="Script" path="res://scenes/custom_windows/topbar.gd" id="2_fy03l"]
+[ext_resource type="Texture2D" uid="uid://b644w6p8xg2vu" path="res://icon.svg" id="3_ea70j"]
+[ext_resource type="Script" path="res://scenes/custom_windows/handles.gd" id="4_oqsu5"]
+[ext_resource type="PackedScene" uid="uid://cvgg41oimyeus" path="res://scenes/components/draggable_component.tscn" id="5_nisav"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1dx5"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_me174"]
+bg_color = Color(0.14902, 0.160784, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktddn"]
+
+[node name="MainWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 600.0
+offset_bottom = 500.0
+mouse_filter = 2
+script = ExtResource("1_uw1pl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h1dx5")
+script = ExtResource("2_fy03l")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="FunctionButton" type="Button" parent="VBoxContainer/TopBar/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 10
+text = "Function"
+
+[node name="Spacer" type="VSeparator" parent="VBoxContainer/TopBar/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="CloseButton" type="TextureButton" parent="VBoxContainer/TopBar/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("3_ea70j")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="WindowTitle" type="Label" parent="VBoxContainer/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 13
+text = "Simple Video Editor"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Content" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_me174")
+
+[node name="StatusBar" type="PanelContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ktddn")
+
+[node name="Label" type="Label" parent="VBoxContainer/StatusBar"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Version 0.0.1"
+
+[node name="Handles" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_oqsu5")
+
+[node name="Bottom" type="Control" parent="Handles"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 9
+
+[node name="Right" type="Control" parent="Handles"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_default_cursor_shape = 10
+
+[node name="Corner" type="Control" parent="Handles"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 12
+
+[node name="DraggableComponent" parent="." instance=ExtResource("5_nisav")]
+
+[connection signal="pressed" from="VBoxContainer/TopBar/HBoxContainer/CloseButton" to="VBoxContainer/TopBar" method="_on_close_button_pressed"]
+[connection signal="gui_input" from="Handles/Bottom" to="Handles" method="_on_bottom_gui_input"]
+[connection signal="gui_input" from="Handles/Right" to="Handles" method="_on_right_gui_input"]
+[connection signal="gui_input" from="Handles/Corner" to="Handles" method="_on_corner_gui_input"]

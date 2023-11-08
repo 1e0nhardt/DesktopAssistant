@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Desktop Assistant"
+run/main_scene="res://scenes/desktop_assistant.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -18,6 +19,7 @@ config/icon="res://icon.svg"
 
 Logger="*res://addons/my_logger/logger.gd"
 EventBus="*res://autoloads/event_bus.gd"
+Global="*res://autoloads/global.gd"
 
 [display]
 
@@ -28,6 +30,11 @@ window/size/transparent=true
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/my_logger/plugin.cfg")
+
+[gui]
+
+theme/custom="res://assets/basic.tres"
+theme/custom_font="res://assets/fonts/smiley-sans-v1.0.0/SmileySans-Oblique.ttf"
 
 [rendering]
 

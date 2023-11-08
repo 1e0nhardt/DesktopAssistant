@@ -160,7 +160,7 @@ class NopassAreaGraph:
         start_points.reverse()
         combined_area.append_array(PackedVector2Array(start_points))
 
-        print_graph()
+        # print_graph()
 
         return combined_area
 
