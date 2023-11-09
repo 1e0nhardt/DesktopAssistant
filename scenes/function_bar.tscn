@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dekdo7vpyjvey"]
+[gd_scene load_steps=11 format=3 uid="uid://dekdo7vpyjvey"]
 
 [ext_resource type="Script" path="res://scenes/function_bar.gd" id="1_2vxni"]
-[ext_resource type="Texture2D" uid="uid://b644w6p8xg2vu" path="res://icon.svg" id="1_l0gco"]
+[ext_resource type="Material" uid="uid://cbc67egooc2qr" path="res://scenes/custom_windows/tune_icon_color.tres" id="3_htquj"]
+[ext_resource type="Texture2D" uid="uid://cjaq2vkc10lbu" path="res://assets/icons/wodefankui.png" id="3_r83vu"]
+[ext_resource type="Texture2D" uid="uid://dnsxomvsoki51" path="res://assets/icons/list.svg" id="4_h68vq"]
+[ext_resource type="Texture2D" uid="uid://c3pwbf1xfa7ru" path="res://assets/icons/role.svg" id="5_20tjw"]
+[ext_resource type="Texture2D" uid="uid://c1f8avwm3p740" path="res://assets/icons/right.svg" id="6_vxxlb"]
+[ext_resource type="Texture2D" uid="uid://bmpq8c5d167ng" path="res://assets/icons/clock.png" id="7_2yotn"]
+[ext_resource type="Texture2D" uid="uid://b3n3l5ntimm30" path="res://assets/icons/xiaoxizhongxin.png" id="8_3rmd0"]
+[ext_resource type="Texture2D" uid="uid://cnqb0vknm18ai" path="res://assets/icons/xiangyoujiantou.png" id="9_qgd2p"]
+[ext_resource type="Texture2D" uid="uid://di6nnkf3d6vus" path="res://assets/icons/cuowu.png" id="10_fx8uf"]
 
 [node name="FunctionBar" type="VBoxContainer"]
 custom_minimum_size = Vector2(24, 200)
@@ -9,58 +17,66 @@ theme_override_constants/separation = 1
 script = ExtResource("1_2vxni")
 
 [node name="SaySomething" type="TextureButton" parent="."]
+material = ExtResource("3_htquj")
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture_normal = ExtResource("1_l0gco")
+texture_normal = ExtResource("3_r83vu")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="TodoList" type="TextureButton" parent="."]
+material = ExtResource("3_htquj")
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture_normal = ExtResource("1_l0gco")
+texture_normal = ExtResource("4_h68vq")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Kanban" type="TextureButton" parent="."]
+material = ExtResource("3_htquj")
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture_normal = ExtResource("1_l0gco")
+texture_normal = ExtResource("5_20tjw")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="MusicPlayer" type="TextureButton" parent="."]
+material = ExtResource("3_htquj")
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture_normal = ExtResource("1_l0gco")
+texture_normal = ExtResource("6_vxxlb")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Clock" type="TextureButton" parent="."]
+material = ExtResource("3_htquj")
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture_normal = ExtResource("1_l0gco")
+texture_normal = ExtResource("7_2yotn")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Chat" type="TextureButton" parent="."]
+material = ExtResource("3_htquj")
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture_normal = ExtResource("1_l0gco")
+texture_normal = ExtResource("8_3rmd0")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Hide" type="TextureButton" parent="."]
+material = ExtResource("3_htquj")
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture_normal = ExtResource("1_l0gco")
+texture_normal = ExtResource("9_qgd2p")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Quit" type="TextureButton" parent="."]
+material = ExtResource("3_htquj")
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture_normal = ExtResource("1_l0gco")
+texture_normal = ExtResource("10_fx8uf")
 ignore_texture_size = true
 stretch_mode = 0
 

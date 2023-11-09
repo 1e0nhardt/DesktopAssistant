@@ -34,7 +34,7 @@ enabled=PackedStringArray("res://addons/my_logger/plugin.cfg")
 [gui]
 
 theme/custom="res://assets/basic.tres"
-theme/custom_font="res://assets/fonts/smiley-sans-v1.0.0/SmileySans-Oblique.ttf"
+theme/custom_font="res://assets/fonts/Source_Han_Serif_SC_Light_Light.otf"
 
 [rendering]
 

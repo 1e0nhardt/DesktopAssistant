@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://be3rqhpykt7k3"]
+[gd_scene load_steps=6 format=3 uid="uid://be3rqhpykt7k3"]
 
 [ext_resource type="Texture2D" uid="uid://itfb7kdoy0nk" path="res://assets/bochi_haha.png" id="1_34kjh"]
 [ext_resource type="Script" path="res://scenes/pet.gd" id="1_mchbf"]
 [ext_resource type="Script" path="res://scenes/desktop_assistant.gd" id="1_qimpd"]
 [ext_resource type="PackedScene" uid="uid://cvgg41oimyeus" path="res://scenes/components/draggable_component.tscn" id="2_jwxly"]
-[ext_resource type="Texture2D" uid="uid://b644w6p8xg2vu" path="res://icon.svg" id="3_wr5ad"]
-[ext_resource type="PackedScene" uid="uid://ff8iacrsl21f" path="res://scenes/custom_windows/todo_window.tscn" id="6_cqm01"]
 [ext_resource type="PackedScene" uid="uid://dekdo7vpyjvey" path="res://scenes/function_bar.tscn" id="7_7h535"]
 
 [node name="DesktopAssistant" type="Node"]
@@ -27,84 +25,3 @@ offset_left = -30.0
 offset_top = -3.0
 offset_right = -6.0
 offset_bottom = 197.0
-
-[node name="Test" type="Node2D" parent="."]
-visible = false
-position = Vector2(500, 321)
-
-[node name="DraggableComponent" parent="Test" instance=ExtResource("2_jwxly")]
-
-[node name="Sprite" type="Sprite2D" parent="Test"]
-position = Vector2(169, 2)
-texture = ExtResource("3_wr5ad")
-centered = false
-
-[node name="Test2" type="Node2D" parent="."]
-visible = false
-
-[node name="DraggableComponent" parent="Test2" instance=ExtResource("2_jwxly")]
-
-[node name="Sprite" type="Sprite2D" parent="Test2"]
-position = Vector2(30, 144)
-texture = ExtResource("3_wr5ad")
-centered = false
-
-[node name="Test3" type="Node2D" parent="."]
-visible = false
-position = Vector2(422, 93)
-
-[node name="DraggableComponent" parent="Test3" instance=ExtResource("2_jwxly")]
-
-[node name="Sprite" type="Sprite2D" parent="Test3"]
-position = Vector2(140, 16)
-texture = ExtResource("3_wr5ad")
-centered = false
-
-[node name="Test4" type="Node2D" parent="."]
-visible = false
-position = Vector2(168, 319)
-
-[node name="DraggableComponent" parent="Test4" instance=ExtResource("2_jwxly")]
-
-[node name="Sprite" type="Sprite2D" parent="Test4"]
-position = Vector2(-5, 67)
-texture = ExtResource("3_wr5ad")
-centered = false
-
-[node name="Test5" type="Node2D" parent="."]
-visible = false
-position = Vector2(-21, 212)
-
-[node name="DraggableComponent" parent="Test5" instance=ExtResource("2_jwxly")]
-
-[node name="Sprite" type="Sprite2D" parent="Test5"]
-position = Vector2(282, -22)
-texture = ExtResource("3_wr5ad")
-centered = false
-
-[node name="Test6" type="Node2D" parent="."]
-visible = false
-position = Vector2(387, 481)
-
-[node name="DraggableComponent" parent="Test6" instance=ExtResource("2_jwxly")]
-
-[node name="Sprite" type="Sprite2D" parent="Test6"]
-texture = ExtResource("3_wr5ad")
-centered = false
-
-[node name="Test7" type="Node2D" parent="."]
-visible = false
-position = Vector2(844, 111)
-
-[node name="DraggableComponent" parent="Test7" instance=ExtResource("2_jwxly")]
-
-[node name="Sprite" type="Sprite2D" parent="Test7"]
-texture = ExtResource("3_wr5ad")
-centered = false
-
-[node name="MainWindow" parent="." instance=ExtResource("6_cqm01")]
-visible = false
-offset_left = 369.0
-offset_top = 95.0
-offset_right = 678.0
-offset_bottom = 492.0

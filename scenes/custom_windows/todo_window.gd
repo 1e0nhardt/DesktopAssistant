@@ -5,7 +5,8 @@ extends "res://scenes/custom_windows/main_window.gd"
 
 @onready var todo_edit: LineEdit = %TodoTextEdit
 @onready var todo_items: VBoxContainer = %ToDos
-@onready var done_items: VBoxContainer = %Done
+@onready var done_revealer: VBoxContainer = %DoneRevealer
+@onready var done_group: VBoxContainer = %Done
 
 var todo_item_scene = preload("res://scenes/components/todo_item.tscn")
 var todo_nodes = []
@@ -28,10 +29,10 @@ func update_todos():
         add_item_to_group(todo, todo_items)
 
     var dones = Global.todo_list.get_dones()
-    done_items.visible = dones.size() != 0
+    done_revealer.visible = dones.size() != 0
 
     for todo in dones:
-        add_item_to_group(todo, done_items)
+        add_item_to_group(todo, done_group)
 
 
 func add_item_to_group(data, group_node: Node):
@@ -48,7 +49,7 @@ func close():
 
 
 func _on_line_edit_text_submitted(new_text: String):
-    Logger.info(new_text)
+    # Logger.info(new_text)
     Global.todo_list.add_item(new_text)
     todo_edit.text = ""
     update_todos()

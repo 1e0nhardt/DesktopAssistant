@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2y2jea8dv066"]
+[gd_scene load_steps=6 format=3 uid="uid://d2y2jea8dv066"]
 
-[ext_resource type="Texture2D" uid="uid://b644w6p8xg2vu" path="res://icon.svg" id="1_ncqah"]
 [ext_resource type="Script" path="res://scenes/components/todo_item.gd" id="1_sjjmr"]
+[ext_resource type="Material" uid="uid://cbc67egooc2qr" path="res://scenes/custom_windows/tune_icon_color.tres" id="2_q0mg1"]
+[ext_resource type="Texture2D" uid="uid://dnbovwd2sbu8a" path="res://assets/icons/icon_circle.png" id="3_eum7l"]
+[ext_resource type="Texture2D" uid="uid://ic3nftt5o881" path="res://assets/icons/collection.svg" id="4_d44l3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7q0a"]
 bg_color = Color(0.8, 0.8, 0.670588, 0.827451)
@@ -17,9 +19,10 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="CheckedButton" type="TextureButton" parent="HBoxContainer"]
+material = ExtResource("2_q0mg1")
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture_normal = ExtResource("1_ncqah")
+texture_normal = ExtResource("3_eum7l")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -30,9 +33,10 @@ text = "some thing to do"
 vertical_alignment = 1
 
 [node name="ImportantButton" type="TextureButton" parent="HBoxContainer"]
+material = ExtResource("2_q0mg1")
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture_normal = ExtResource("1_ncqah")
+texture_normal = ExtResource("4_d44l3")
 ignore_texture_size = true
 stretch_mode = 0
 

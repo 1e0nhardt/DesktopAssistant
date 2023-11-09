@@ -1,12 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://ff8iacrsl21f"]
+[gd_scene load_steps=15 format=3 uid="uid://ff8iacrsl21f"]
 
 [ext_resource type="Script" path="res://scenes/custom_windows/todo_window.gd" id="1_u1kdd"]
-[ext_resource type="Texture2D" uid="uid://b644w6p8xg2vu" path="res://icon.svg" id="3_c25mk"]
+[ext_resource type="Texture2D" uid="uid://dvafefuq3bmh0" path="res://assets/icons/wancheng.png" id="2_c074y"]
+[ext_resource type="Material" uid="uid://cbc67egooc2qr" path="res://scenes/custom_windows/tune_icon_color.tres" id="3_nlr43"]
+[ext_resource type="Texture2D" uid="uid://di6nnkf3d6vus" path="res://assets/icons/cuowu.png" id="3_wenom"]
 [ext_resource type="Script" path="res://scenes/custom_windows/handles.gd" id="4_far2n"]
+[ext_resource type="Script" path="res://scenes/custom_windows/revealer.gd" id="5_tji6e"]
 [ext_resource type="PackedScene" uid="uid://cvgg41oimyeus" path="res://scenes/components/draggable_component.tscn" id="5_vinbh"]
+[ext_resource type="Texture2D" uid="uid://c1f8avwm3p740" path="res://assets/icons/right.svg" id="6_0kblq"]
+[ext_resource type="Texture2D" uid="uid://dnbovwd2sbu8a" path="res://assets/icons/icon_circle.png" id="6_o4a5b"]
+[ext_resource type="Shader" path="res://scenes/custom_windows/rotate_arrow.gdshader" id="6_vy7l5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1dx5"]
 bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1gy13"]
+shader = ExtResource("6_vy7l5")
+shader_parameter/color = Color(0.490196, 0.8, 0.2, 1)
+shader_parameter/rotation = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gu857"]
+bg_color = Color(0.8, 0.8, 0.670588, 0.827451)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktddn"]
 
@@ -39,10 +53,11 @@ mouse_filter = 2
 theme_override_constants/separation = 6
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/TopBar/HBoxContainer"]
+material = ExtResource("3_nlr43")
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("3_c25mk")
+texture = ExtResource("2_c074y")
 expand_mode = 1
 
 [node name="WindowTitle" type="Label" parent="VBoxContainer/TopBar/HBoxContainer"]
@@ -62,9 +77,10 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="CloseButton" type="TextureButton" parent="VBoxContainer/TopBar/HBoxContainer"]
+material = ExtResource("3_nlr43")
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture_normal = ExtResource("3_c25mk")
+texture_normal = ExtResource("3_wenom")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -104,42 +120,55 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="Done" type="VBoxContainer" parent="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList"]
+[node name="DoneRevealer" type="VBoxContainer" parent="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 3
+script = ExtResource("5_tji6e")
 
-[node name="GroupTitle" type="HBoxContainer" parent="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList/Done"]
+[node name="GroupTitle" type="HBoxContainer" parent="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList/DoneRevealer"]
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="CheckedButton" type="TextureButton" parent="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList/Done/GroupTitle"]
+[node name="CheckedButton" type="TextureButton" parent="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList/DoneRevealer/GroupTitle"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_1gy13")
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("3_c25mk")
+texture_normal = ExtResource("6_0kblq")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList/Done/GroupTitle"]
+[node name="Label" type="Label" parent="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList/DoneRevealer/GroupTitle"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Done
 "
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Content/VBoxContainer"]
+[node name="Done" type="VBoxContainer" parent="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList/DoneRevealer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 3
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Content/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Content/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gu857")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Content/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Content/VBoxContainer/PanelContainer/HBoxContainer"]
+material = ExtResource("3_nlr43")
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture = ExtResource("3_c25mk")
+texture = ExtResource("6_o4a5b")
 expand_mode = 1
 
-[node name="TodoTextEdit" type="LineEdit" parent="VBoxContainer/Content/VBoxContainer/HBoxContainer"]
+[node name="TodoTextEdit" type="LineEdit" parent="VBoxContainer/Content/VBoxContainer/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
@@ -211,7 +240,8 @@ mouse_default_cursor_shape = 12
 [node name="DraggableComponent" parent="." instance=ExtResource("5_vinbh")]
 
 [connection signal="pressed" from="VBoxContainer/TopBar/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
-[connection signal="text_submitted" from="VBoxContainer/Content/VBoxContainer/HBoxContainer/TodoTextEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList/DoneRevealer/GroupTitle/CheckedButton" to="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList/DoneRevealer" method="_on_checked_button_pressed"]
+[connection signal="text_submitted" from="VBoxContainer/Content/VBoxContainer/PanelContainer/HBoxContainer/TodoTextEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="gui_input" from="Handles/Bottom" to="Handles" method="_on_bottom_gui_input"]
 [connection signal="gui_input" from="Handles/Right" to="Handles" method="_on_right_gui_input"]
 [connection signal="gui_input" from="Handles/Corner" to="Handles" method="_on_corner_gui_input"]
