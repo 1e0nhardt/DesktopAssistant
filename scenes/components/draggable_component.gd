@@ -36,9 +36,11 @@ var parent_visible: bool:
 
 func _ready():
     if get_parent() is Control:
-        draggable_sprite = get_parent().get_node("Sprite")
-        if draggable_sprite == null:
+        if get_parent().has_node("Sprite"):
+            draggable_sprite = get_parent().get_node("Sprite")
+        else:
             draggable_sprite = get_parent().find_child("TopBar")
+        assert(draggable_sprite != null, "draggable sprite is null")
     else:
         # 父节点需要挂一个Sprite节点，这个节点需要有get_rect()方法和global_position属性。且锚点需要在左上角。
         draggable_sprite = get_parent().get_node("Sprite")

@@ -22,10 +22,15 @@ class Widget:
     func open():
         _instance = _scene.instantiate()
         _parent.add_child(_instance)
+        _instance.tree_exited.connect(on_free)
 
     func close():
-        if activated:
+        if _instance:
             _instance.close()
+
+    func on_free():
+        _instance = null
+
 
 var todo_widget_scene = preload("res://scenes/custom_windows/todo_window.tscn") as PackedScene
 var music_player_widget_scene = preload("res://scenes/music_player_controller.tscn") as PackedScene

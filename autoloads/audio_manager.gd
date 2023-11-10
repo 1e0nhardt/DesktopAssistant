@@ -22,6 +22,7 @@ class MusicPlayer:
     var song_names := []
     var _music_player: AudioStreamPlayer
     var play_position := 0.0
+    var play_mode := "random"
     var current_index: int:
         set(value):
             current_index = value % len(files)
@@ -45,7 +46,11 @@ class MusicPlayer:
         for file in all_files:
             if file.ends_with(".mp3"):
                 files.append(path + "/" + file)
-                song_names.append(file.substr(0, len(file) - 4))
+                var song_name = file.substr(0, len(file) - 4)
+                var song_info = song_name.split("-")
+                song_info.reverse()
+                song_name = "-".join(song_info)
+                song_names.append(song_name)
 
         _music_player = player
 
@@ -65,7 +70,10 @@ class MusicPlayer:
         _playing = not _playing
 
     func next():
-        current_index += 1
+        if play_mode == "random":
+            current_index += randi_range(1, len(song_names))
+        else:
+            current_index += 1
 
     func prev():
         current_index -= 1

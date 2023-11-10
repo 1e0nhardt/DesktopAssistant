@@ -8,7 +8,7 @@ extends PanelContainer
 
 var raw_size: Vector2
 var hidding := false
-var paused := false
+var play_flag := false
 var play_icon = preload("res://assets/icons/play.png")
 var stop_icon = preload("res://assets/icons/stop.png")
 
@@ -60,11 +60,12 @@ func _on_prev_button_pressed():
 
 func _on_play_button_pressed():
     AudioManager.music_player.pause()
-    paused = not paused
-    play_button.texture_normal = stop_icon if paused else play_icon
+    play_flag = not play_flag
+    play_button.texture_normal = play_icon if play_flag else stop_icon
 
 
 func _on_next_button_pressed():
+    #TODO 设置播放模式选项
     AudioManager.music_player.next()
 
 
