@@ -87,8 +87,8 @@ class NopassAreaDisjointSet:
                 if check_rect_overlap(nopass_area_dict[keys[i]], nopass_area_dict[keys[j]]):
                     join(i, j, pre)
 
-        Logger.debug("Pre", pre)
-        Logger.debug("Keys", keys)
+        # Logger.debug("Pre", pre)
+        # Logger.debug("Keys", keys)
         group_tag = {}
         for i in range(0, len(keys)):
             var tag = find(i, pre)
@@ -100,7 +100,7 @@ class NopassAreaDisjointSet:
         # 生成最终目标区域
         var combined_area: PackedVector2Array = []
         var start_points := []
-        Logger.debug("Group Tag", group_tag)
+        # Logger.debug("Group Tag", group_tag)
         for t in group_tag:
             var rects = []
             for ki in group_tag[t]:
@@ -273,9 +273,9 @@ class NopassAreaGraph:
         var r2 = nopass_area_dict[node_id2]
         return check_rect_overlap(r1, r2)
 
-var nopass_areas = NopassAreaGraph.new()
+# var nopass_areas = NopassAreaGraph.new()
 # var nopass_areas = NopassAreaNaive.new()
-# var nopass_areas = NopassAreaDisjointSet.new()
+var nopass_areas = NopassAreaDisjointSet.new()
 var fullscreen_nopass_flag := false
 
 
@@ -284,6 +284,7 @@ func update_nopass_area(nopass_area: PackedVector2Array, node_id: int):
     #TODO 几个区域合在一起时，一起拖动后会闪一下
     DisplayServer.window_set_mouse_passthrough(area)
     fullscreen_nopass_flag = false
+    # Logger.debug("Area", area)
 
 func set_fullscreen_nopass_area():
     if fullscreen_nopass_flag:

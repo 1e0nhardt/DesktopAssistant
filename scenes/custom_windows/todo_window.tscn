@@ -16,7 +16,7 @@ bg_color = Color(0.25098, 0.25098, 0.25098, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1gy13"]
 shader = ExtResource("6_vy7l5")
-shader_parameter/color = Color(0.490196, 0.8, 0.2, 1)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/rotation = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gu857"]
@@ -45,6 +45,7 @@ theme_override_constants/separation = 0
 [node name="TopBar" type="PanelContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h1dx5")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TopBar"]
@@ -95,6 +96,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Content"]
 layout_mode = 1
@@ -155,6 +157,7 @@ theme_override_constants/separation = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Content/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gu857")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Content/VBoxContainer/PanelContainer"]

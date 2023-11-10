@@ -36,13 +36,15 @@ var parent_visible: bool:
 
 func _ready():
     if get_parent() is Control:
-        draggable_sprite = get_parent().find_child("TopBar")
+        draggable_sprite = get_parent().get_node("Sprite")
+        if draggable_sprite == null:
+            draggable_sprite = get_parent().find_child("TopBar")
     else:
         # 父节点需要挂一个Sprite节点，这个节点需要有get_rect()方法和global_position属性。且锚点需要在左上角。
         draggable_sprite = get_parent().get_node("Sprite")
 
 
-func _input(event):
+func _unhandled_input(event):
     if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and mouse_in_rect():
         # Logger.debug("sprite rect", draggable_sprite.get_rect()) # get_rect()返回的是局部坐标系中的坐标。
         # Logger.debug("sprite position", get_sprite_global_position()) # global_position 是锚点位置
@@ -95,9 +97,9 @@ func get_draggable_region_size():
 
 
 func get_sprite_global_position():
-    if draggable_sprite is Sprite2D:
+    if draggable_sprite is Sprite2D or draggable_sprite is TextureRect:
         return draggable_sprite.global_position
-    if draggable_sprite is Control:
+    elif draggable_sprite is Control:
         return draggable_sprite.owner.global_position
     else:
         Logger.warn("sprite size is zero")

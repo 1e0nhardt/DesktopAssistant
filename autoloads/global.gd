@@ -90,5 +90,4 @@ class TodoList:
         return str(todo_item_dicts)
 
 
-
 var todo_list := TodoList.new().deserialize()

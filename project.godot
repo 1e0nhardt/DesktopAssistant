@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Logger="*res://addons/my_logger/logger.gd"
 EventBus="*res://autoloads/event_bus.gd"
 Global="*res://autoloads/global.gd"
+AudioManager="*res://autoloads/audio_manager.tscn"
 
 [display]
 
