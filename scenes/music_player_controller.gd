@@ -19,6 +19,7 @@ func _ready():
     raw_size = size
 
     AudioManager.music_player.change_song.connect(on_song_changed)
+    AudioManager.mucis_stream_player.finished.connect(on_song_finished)
     AudioManager.music_player.current_index = 0
 
     for song_name in AudioManager.music_player.song_names:
@@ -52,6 +53,11 @@ func close():
 
 func on_song_changed(song_name: String):
     name_label.text = song_name
+
+
+func on_song_finished():
+    # Logger.debug("Finished")
+    AudioManager.music_player.next()
 
 
 func _on_prev_button_pressed():
