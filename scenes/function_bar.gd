@@ -9,11 +9,11 @@ class Widget:
     var _instance: Node
     var activated := false:
         set(value):
-                activated = value
-                if activated:
-                    open()
-                else:
-                    close()
+            activated = value
+            if activated:
+                open()
+            else:
+                close()
 
     func _init(scene: PackedScene, parent_node: Node):
         _scene = scene
@@ -34,9 +34,11 @@ class Widget:
 
 var todo_widget_scene = preload("res://scenes/custom_windows/todo_window.tscn") as PackedScene
 var music_player_widget_scene = preload("res://scenes/music_player_controller.tscn") as PackedScene
+var dialog_scene = preload("res://scenes/components/p5_dialog.tscn") as PackedScene
 
 var todo_widget: Widget
 var music_player_widget: Widget
+var dialog_instance: P5Dialog
 
 var hidding = false
 var pre_position: Vector2
@@ -45,6 +47,11 @@ var pre_position: Vector2
 func _ready():
     todo_widget = Widget.new(todo_widget_scene, get_window())
     music_player_widget = Widget.new(music_player_widget_scene, get_window())
+    dialog_instance = dialog_scene.instantiate() as Control
+    get_window().call_deferred("add_child", dialog_instance)
+    # keep_offset=false时不会更新节点的实际位置。为true时才和编辑器中设置锚点的效果相同。
+    dialog_instance.set_anchors_preset.call_deferred(PRESET_BOTTOM_LEFT, true)
+    dialog_instance.position = Vector2(0, -dialog_instance.size.y - 60)
 
 
 func update_nopass_area(offset=0):
@@ -56,6 +63,10 @@ func update_nopass_area(offset=0):
         global_position + Vector2(-area_offset, get_rect().size.y + area_offset)
     ])
     EventBus.update_nopass_area(nopass_area, get_instance_id())
+
+
+func _on_say_something_pressed():
+    dialog_instance.show_once("后藤 独", "道可道，非常道。\n名可名，非常名。", 2.0, "res://assets/bochi_haha.png")
 
 
 func _on_todo_list_pressed():
@@ -88,5 +99,6 @@ func _on_hide_pressed():
 func _on_quit_pressed():
     todo_widget.close()
     music_player_widget.close()
+    dialog_instance.queue_free()
 
     get_tree().quit()

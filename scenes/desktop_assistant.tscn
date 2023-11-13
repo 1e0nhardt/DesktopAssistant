@@ -10,7 +10,7 @@
 script = ExtResource("1_qimpd")
 
 [node name="Pet" type="Node2D" parent="."]
-position = Vector2(944, 375)
+position = Vector2(960, 387)
 script = ExtResource("1_mchbf")
 
 [node name="DraggableComponent" parent="Pet" instance=ExtResource("2_jwxly")]

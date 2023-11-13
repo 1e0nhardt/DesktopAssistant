@@ -80,6 +80,7 @@ texture_normal = ExtResource("10_fx8uf")
 ignore_texture_size = true
 stretch_mode = 0
 
+[connection signal="pressed" from="SaySomething" to="." method="_on_say_something_pressed"]
 [connection signal="pressed" from="TodoList" to="." method="_on_todo_list_pressed"]
 [connection signal="pressed" from="MusicPlayer" to="." method="_on_music_player_pressed"]
 [connection signal="pressed" from="Hide" to="." method="_on_hide_pressed"]

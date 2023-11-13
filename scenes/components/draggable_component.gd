@@ -34,6 +34,7 @@ var parent_visible: bool:
             parent_visible_changed = false
         return v
 
+
 func _ready():
     if get_parent() is Control:
         if get_parent().has_node("Sprite"):
@@ -46,7 +47,7 @@ func _ready():
         draggable_sprite = get_parent().get_node("Sprite")
 
 
-func _unhandled_input(event):
+func _input(event):
     if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and mouse_in_rect():
         # Logger.debug("sprite rect", draggable_sprite.get_rect()) # get_rect()返回的是局部坐标系中的坐标。
         # Logger.debug("sprite position", get_sprite_global_position()) # global_position 是锚点位置

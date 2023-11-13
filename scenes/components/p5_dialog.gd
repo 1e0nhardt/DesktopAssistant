@@ -1,4 +1,7 @@
+class_name P5Dialog
 extends Control
+
+const CHARACTER_SPRITE_SIZE = Vector2(440, 440)
 
 @export var box_color: Color:
     set(value):
@@ -21,6 +24,9 @@ extends Control
 @onready var name_label: Label = $NameLabel
 @onready var text_label: Label = $TextLabel
 @onready var contrast_label: Label = %ContrastLabel
+@onready var nopass_area_indicator: Panel = $TopBar
+@onready var character_sprite: Sprite2D = $CharacterSprite
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var t := 0.0
 var mark_node_origin: Vector2
@@ -28,6 +34,7 @@ var mark_node_origin_init: Vector2
 var change_target_flag := false
 var prev_lines: int
 var dialog_font_size: int
+var nopass_area_width_init: float
 
 var dialog_box_animation_vertices: Array = [2,3,4,11,12,13,14,5,10]
 var dialog_box_border_animation_vertices: Array = [
@@ -45,6 +52,21 @@ var box_border_polygon: PackedVector2Array
 var name_polygon: PackedVector2Array
 var name_content_polygon: PackedVector2Array
 
+var current_character_name: String
+
+var dialog_visible: bool:
+    set(value):
+        visible = value
+        if not animation_player:
+            return
+
+        if value:
+            animation_player.play("play_in")
+        else:
+            animation_player.play("play_out")
+    get:
+        return visible
+
 
 func _ready():
     mark_node_origin = Vector2(520, 60)
@@ -54,15 +76,22 @@ func _ready():
     name_polygon = name_box.polygon.duplicate()
     name_content_polygon = name_box_content.polygon.duplicate()
     dialog_font_size = text_label.get_theme_font_size("font_size")
+    nopass_area_width_init = size.x
 
     set_box_color(box_color)
     set_border_color(border_color)
-    set_character_name("喜多川 佑介")
-    set_dialog("心之怪盗团一二三四五六七八九十一二三\ntake your heart!")
-    get_tree().create_timer(1.5).timeout.connect(func (): set_dialog("大学之道，在明明德，在亲民，在止于至善。欲明明德于天下者，必治其国。"))
-    get_tree().create_timer(3.0).timeout.connect(func (): set_dialog("大学之道，在明明德，在亲民，在止于至善。\n欲明明德于天下者，必治其国。"))
-    get_tree().create_timer(4.5).timeout.connect(func (): set_dialog("大学之道\n欲明明德于天下者，必治其国。"))
-    get_tree().create_timer(6).timeout.connect(func (): set_dialog("大学之道，在明明德，在亲民，在止于至善。"))
+    visible = false
+    dialog_visible = false
+
+    # test_dialog()
+
+
+func test_dialog():
+    set_dialog("雨宫 莲", "心之怪盗团\ntake your heart!", "res://assets/bochi_haha.png")
+    get_tree().create_timer(2.0).timeout.connect(func (): dialog_visible = true)
+    get_tree().create_timer(4.0).timeout.connect(func (): change_dialog("雨宫 莲", "心之怪盗团哈哈\ntake your heart!", "res://assets/bochi_haha.png"))
+    get_tree().create_timer(8.0).timeout.connect(func (): change_dialog("雨宫 莲", "拜访量浮动啊啊浮动啊封顶发等死阿三\ntake your heart!", "res://assets/bochi_haha.png"))
+    get_tree().create_timer(12.0).timeout.connect(func (): change_dialog("喜多川 佑介", "心之怪盗懂法团\ntake your heart!", "res://icon.svg"))
 
 
 func _process(delta):
@@ -74,7 +103,7 @@ func _process(delta):
     for v in name_box_animation_vertices:
         name_box.polygon[v] = animate_point(name_polygon[v], 6, v)
     for v in name_box_content_animation_vertices:
-        name_box_content.polygon[v] = animate_point(name_content_polygon[v], 6, v)
+        name_box_content.polygon[v] = animate_point(name_content_polygon[v], 6, v+1)
     animate_mark(delta)
 
 
@@ -121,7 +150,12 @@ func set_character_name(n: String):
     contrast_label.text = n[1]
 
 
-func set_dialog(n: String):
+func set_character_sprite(n: String):
+    character_sprite.texture = load(n)
+    character_sprite.scale = CHARACTER_SPRITE_SIZE / character_sprite.texture.get_size()
+
+
+func set_dialog_content(n: String):
     text_label.text = n
 
     var max_line_length = 0
@@ -130,7 +164,7 @@ func set_dialog(n: String):
         if line.length() > 15 and line.length() > max_line_length:
             max_line_length = line.length()
 
-    Logger.debug("Lines", lines)
+    # Logger.debug("Lines", lines)
     # 只考虑台词有1行或2行的情况
     if lines.size() == 1 and prev_lines != 1:
         box_polygon[6] += Vector2(0, -dialog_font_size)
@@ -152,6 +186,45 @@ func set_dialog(n: String):
         for v in dialog_box_border_right_vertices:
             dialog_box_border.polygon[v] = box_border_polygon[v] + Vector2(text_label_expand_width, 0)
 
-        Logger.debug("Dialog Size", text_label_expand_width)
+        # Logger.debug("Dialog Size", text_label_expand_width)
 
     mark_node_origin = mark_node_origin_init + Vector2(text_label_expand_width, 0)
+
+    # mouse pass through
+    nopass_area_indicator.set_size(Vector2(nopass_area_width_init + text_label_expand_width, nopass_area_indicator.size.y))
+    set_size(Vector2(nopass_area_width_init + text_label_expand_width, size.y))
+    $DraggableComponent.update_nopass_area()
+
+
+func change_dialog(character_name: String, content: String, sprite_path: String = ""):
+    # 切人了
+    if current_character_name != character_name:
+        current_character_name = character_name
+        animation_player.play("play_out")
+        await animation_player.animation_finished
+        animation_player.play("RESET")
+        await animation_player.animation_finished
+        set_dialog(character_name, content, sprite_path)
+        animation_player.play("play_in")
+    else: # 同一个人连续说话
+        var tween = create_tween()
+        tween.tween_property(text_label, "self_modulate", Color(0,0,0,0), 0.2)
+        await tween.finished
+        text_label.self_modulate = Color(1,1,1,1)
+        set_dialog_content(content)
+
+
+func set_dialog(character_name: String, content: String, sprite_path: String = ""):
+    set_character_name(character_name)
+    set_dialog_content(content)
+    if sprite_path != "":
+        if not FileAccess.file_exists(sprite_path):
+            Logger.warn("Character sprite path not exist: %s" % sprite_path)
+            return
+        set_character_sprite(sprite_path)
+
+
+func show_once(character_name: String, content: String, duration: float, sprite_path: String = ""):
+    set_dialog(character_name, content, sprite_path)
+    dialog_visible = true
+    get_tree().create_timer(duration).timeout.connect(func (): dialog_visible = false)
