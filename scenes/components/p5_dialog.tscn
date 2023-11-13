@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0ndnwk2bedaa"]
+
+[ext_resource type="Script" path="res://scenes/components/p5_dialog.gd" id="1_2dxwq"]
+[ext_resource type="FontFile" uid="uid://bm8kaqoo4q6kd" path="res://assets/fonts/AlimamaDongFangDaKai-Regular.ttf" id="2_wymg5"]
+[ext_resource type="Shader" path="res://scenes/components/p5_dialog_black_bg.gdshader" id="3_g3dit"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sgluh"]
+shader = ExtResource("3_g3dit")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xm5r8"]
+
+[node name="Dialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 656.0
+offset_bottom = 224.0
+script = ExtResource("1_2dxwq")
+box_color = Color(0.0823529, 0.0666667, 0.027451, 0.784314)
+border_color = Color(1, 1, 1, 1)
+
+[node name="DialogNode" type="Node2D" parent="."]
+position = Vector2(-1, 111)
+
+[node name="DialogBox" type="Polygon2D" parent="DialogNode"]
+position = Vector2(-270, -542)
+color = Color(0.0823529, 0.0666667, 0.027451, 0.784314)
+polygon = PackedVector2Array(272, 544, 271, 550, 326, 609, 341, 594, 382, 637, 401, 620, 857, 676, 833, 489, 832, 467, 777, 476, 361, 508, 352, 549, 317, 523, 314, 544, 308, 550)
+
+[node name="DialogBoxBorder" type="Polygon2D" parent="DialogNode/DialogBox"]
+polygon = PackedVector2Array(280, 548, 328, 599, 343, 585, 382, 625, 400, 612, 849, 668, 826, 477, 363, 513, 358, 561, 322, 530, 318, 559, 280, 548, 304, 564, 322, 571, 327, 544, 361, 569, 367, 519, 818, 486, 841, 660, 395, 603, 383, 615, 343, 574, 328, 589, 304, 564)
+
+[node name="NameBox" type="Polygon2D" parent="DialogNode"]
+position = Vector2(-269, -541)
+color = Color(0.0823529, 0.0666667, 0.027451, 0.784314)
+polygon = PackedVector2Array(285, 534, 386, 527, 375, 509, 541, 486, 511, 434, 335, 485, 342, 499)
+
+[node name="NameBoxContent" type="Polygon2D" parent="DialogNode/NameBox"]
+polygon = PackedVector2Array(295, 530, 295, 531, 378, 523, 369, 508, 531, 481, 507, 441, 341, 488, 349, 503)
+
+[node name="MarkNode" type="Node2D" parent="DialogNode"]
+position = Vector2(524.003, 61.0008)
+scale = Vector2(1.10008, 1.10008)
+
+[node name="MarkBox" type="Polygon2D" parent="DialogNode/MarkNode"]
+position = Vector2(-763, -609)
+color = Color(0.0823529, 0.0666667, 0.027451, 0.784314)
+polygon = PackedVector2Array(764, 607, 781, 609, 909, 562, 853, 512)
+
+[node name="MarkBoxContent" type="Polygon2D" parent="DialogNode/MarkNode/MarkBox"]
+polygon = PackedVector2Array(771, 603, 784.943, 603.168, 890.943, 560.168, 856, 522)
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 94.0
+offset_top = 51.0
+offset_right = 154.0
+offset_bottom = 78.0
+rotation = -0.261799
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_wymg5")
+theme_override_font_sizes/font_size = 18
+text = "雨宫 莲"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="NameLabel"]
+material = SubResource("ShaderMaterial_sgluh")
+layout_mode = 0
+offset_left = 18.0
+offset_top = 2.0
+offset_right = 35.0
+offset_bottom = 26.0
+texture = SubResource("PlaceholderTexture2D_xm5r8")
+
+[node name="ContrastLabel" type="Label" parent="NameLabel/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.5
+offset_top = -13.0
+offset_right = 9.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wymg5")
+theme_override_font_sizes/font_size = 18
+text = "宫"
+vertical_alignment = 1
+
+[node name="TextLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 92.0
+offset_right = 543.0
+offset_bottom = 164.0
+theme_override_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource("2_wymg5")
+theme_override_font_sizes/font_size = 26
+text = "心之怪盗团一二三四五六七八九十
+take your heart!"
+vertical_alignment = 1
