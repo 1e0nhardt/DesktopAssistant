@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba3ry7koiqakq"]
+
+[ext_resource type="FontFile" uid="uid://bm8kaqoo4q6kd" path="res://assets/fonts/AlimamaDongFangDaKai-Regular.ttf" id="1_78pjs"]
+[ext_resource type="Script" path="res://scenes/components/tag_button.gd" id="2_hc58c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sih7l"]
+content_margin_right = 2.0
+content_margin_bottom = 1.0
+bg_color = Color(0.294118, 0.694118, 0.407843, 1)
+corner_radius_top_left = 15
+corner_radius_bottom_left = 15
+corner_detail = 1
+
+[node name="TagButton" type="Button"]
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_78pjs")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_sih7l")
+text = "标签"
+script = ExtResource("2_hc58c")

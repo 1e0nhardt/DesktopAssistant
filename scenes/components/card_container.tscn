@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://dw8da3gqbb2ph"]
+
+[ext_resource type="Script" path="res://scenes/components/card_content.gd" id="1_ecqo1"]
+[ext_resource type="Script" path="res://scenes/components/card_container.gd" id="1_fim1p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8b52a"]
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bvix"]
+content_margin_bottom = 1.0
+bg_color = Color(0.270588, 0.270588, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b6v00"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_umo54"]
+
+[node name="CardContainer" type="PanelContainer"]
+offset_right = 200.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8b52a")
+script = ExtResource("1_fim1p")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TitleContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/TitleContainer"]
+layout_mode = 2
+text = "Concept"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/TitleContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TagEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/TitleContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/minimum_character_width = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_8bvix")
+placeholder_text = "add tag ..."
+
+[node name="Content" type="TextEdit" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_constants/line_spacing = -4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_b6v00")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_umo54")
+text = "Hello
+[list]  [*]Entry A
+  [*]Entry B
+[/list]
+Hello
+- nihk
+- hdsakl
+"
+context_menu_enabled = false
+caret_blink = true
+caret_move_on_right_click = false
+script = ExtResource("1_ecqo1")
+
+[node name="TagContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[connection signal="text_submitted" from="MarginContainer/VBoxContainer/TitleContainer/TagEdit" to="." method="_on_line_edit_text_submitted"]
