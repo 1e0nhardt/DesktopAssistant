@@ -2,6 +2,7 @@ class_name TodoWidget
 extends "res://scenes/custom_windows/main_window.gd"
 
 # @export var todo_item: PackedScene
+signal closed
 
 @onready var todo_edit: LineEdit = %TodoTextEdit
 @onready var todo_items: VBoxContainer = %ToDos
@@ -57,4 +58,9 @@ func _on_line_edit_text_submitted(new_text: String):
 
 
 func _on_close_button_pressed():
-    close()
+    closed.emit()
+
+
+func _on_clear_button_pressed():
+    Global.todo_list.clear_dones()
+    update_todos()

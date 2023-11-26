@@ -1,20 +1,26 @@
-[gd_scene load_steps=15 format=3 uid="uid://ff8iacrsl21f"]
+[gd_scene load_steps=17 format=3 uid="uid://ff8iacrsl21f"]
 
 [ext_resource type="Script" path="res://scenes/custom_windows/todo_window.gd" id="1_u1kdd"]
-[ext_resource type="Texture2D" uid="uid://dvafefuq3bmh0" path="res://assets/icons/wancheng.png" id="2_c074y"]
+[ext_resource type="Texture2D" uid="uid://bfx2mokrudeo0" path="res://assets/icons/complete.png" id="3_e6ev4"]
 [ext_resource type="Material" uid="uid://cbc67egooc2qr" path="res://scenes/custom_windows/tune_icon_color.tres" id="3_nlr43"]
-[ext_resource type="Texture2D" uid="uid://di6nnkf3d6vus" path="res://assets/icons/cuowu.png" id="3_wenom"]
 [ext_resource type="Script" path="res://scenes/custom_windows/handles.gd" id="4_far2n"]
+[ext_resource type="Texture2D" uid="uid://d0p08tk3aoghu" path="res://assets/icons/close-bold.png" id="4_x63nx"]
 [ext_resource type="Script" path="res://scenes/custom_windows/revealer.gd" id="5_tji6e"]
 [ext_resource type="PackedScene" uid="uid://cvgg41oimyeus" path="res://scenes/components/draggable_component.tscn" id="5_vinbh"]
-[ext_resource type="Texture2D" uid="uid://c1f8avwm3p740" path="res://assets/icons/right.svg" id="6_0kblq"]
-[ext_resource type="Texture2D" uid="uid://dnbovwd2sbu8a" path="res://assets/icons/icon_circle.png" id="6_o4a5b"]
 [ext_resource type="Shader" path="res://scenes/custom_windows/rotate_arrow.gdshader" id="6_vy7l5"]
+[ext_resource type="Texture2D" uid="uid://c2jglcxxumx22" path="res://assets/icons/done.png" id="7_fy0xp"]
+[ext_resource type="Texture2D" uid="uid://bevm2oln4sd7f" path="res://assets/icons/ashbin.png" id="8_27qow"]
+[ext_resource type="Texture2D" uid="uid://tnluhfkxkefn" path="res://assets/icons/arrow-up-circle.png" id="8_oiv7i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1dx5"]
 bg_color = Color(0.25098, 0.25098, 0.25098, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1gy13"]
+shader = ExtResource("6_vy7l5")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/rotation = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_umyoo"]
 shader = ExtResource("6_vy7l5")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/rotation = 0.0
@@ -58,7 +64,7 @@ material = ExtResource("3_nlr43")
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("2_c074y")
+texture = ExtResource("3_e6ev4")
 expand_mode = 1
 
 [node name="WindowTitle" type="Label" parent="VBoxContainer/TopBar/HBoxContainer"]
@@ -81,7 +87,7 @@ mouse_filter = 2
 material = ExtResource("3_nlr43")
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture_normal = ExtResource("3_wenom")
+texture_normal = ExtResource("4_x63nx")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -139,7 +145,7 @@ material = SubResource("ShaderMaterial_1gy13")
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("6_0kblq")
+texture_normal = ExtResource("7_fy0xp")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -149,6 +155,16 @@ size_flags_horizontal = 3
 text = "Done
 "
 vertical_alignment = 1
+
+[node name="ClearButton" type="TextureButton" parent="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList/DoneRevealer/GroupTitle"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_umyoo")
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("8_27qow")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Done" type="VBoxContainer" parent="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList/DoneRevealer"]
 unique_name_in_owner = true
@@ -168,7 +184,7 @@ theme_override_constants/separation = 5
 material = ExtResource("3_nlr43")
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture = ExtResource("6_o4a5b")
+texture = ExtResource("8_oiv7i")
 expand_mode = 1
 
 [node name="TodoTextEdit" type="LineEdit" parent="VBoxContainer/Content/VBoxContainer/PanelContainer/HBoxContainer"]
@@ -199,8 +215,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 4.0
-offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -244,6 +258,7 @@ mouse_default_cursor_shape = 12
 
 [connection signal="pressed" from="VBoxContainer/TopBar/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList/DoneRevealer/GroupTitle/CheckedButton" to="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList/DoneRevealer" method="_on_checked_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Content/VBoxContainer/ScrollContainer/ToDoList/DoneRevealer/GroupTitle/ClearButton" to="." method="_on_clear_button_pressed"]
 [connection signal="text_submitted" from="VBoxContainer/Content/VBoxContainer/PanelContainer/HBoxContainer/TodoTextEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="gui_input" from="Handles/Bottom" to="Handles" method="_on_bottom_gui_input"]
 [connection signal="gui_input" from="Handles/Right" to="Handles" method="_on_right_gui_input"]

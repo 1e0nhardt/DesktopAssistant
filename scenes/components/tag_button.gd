@@ -3,7 +3,7 @@ extends Button
 
 
 func setup(content: String, tag_color: Color = Color(0.2, 0.5, 0.6), text_color: Color = Color(0.2, 0.6, 0.8)):
-    text = "   " + content
+    text = "  " + content
 
     var style_box: StyleBoxFlat = get_theme_stylebox("normal")
     style_box.corner_detail = 1

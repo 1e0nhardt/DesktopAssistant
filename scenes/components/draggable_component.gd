@@ -44,7 +44,7 @@ func _ready():
         assert(draggable_sprite != null, "draggable sprite is null")
     else:
         # 父节点需要挂一个Sprite节点，这个节点需要有get_rect()方法和global_position属性。且锚点需要在左上角。
-        draggable_sprite = get_parent().get_node("Sprite")
+        draggable_sprite = get_parent().get_node("BgSprite")
 
 
 func _input(event):
@@ -82,7 +82,9 @@ func mouse_in_rect():
 func get_sprite_size():
     if draggable_sprite is Sprite2D:
         return draggable_sprite.get_rect().size * draggable_sprite.scale
-    if draggable_sprite is Control:
+    elif draggable_sprite.name == "BgSprite":
+        return draggable_sprite.get_rect().size
+    elif draggable_sprite is Control:
         return draggable_sprite.owner.get_rect().size
     else:
         Logger.warn("sprite size is zero")
@@ -125,7 +127,7 @@ func update_nopass_area():
 func on_drag_started(event_position: Vector2):
     dragging = true
     drag_offset = event_position - get_parent().global_position
-    # 拖动时会出现白边，改为拖动时nopass_area为整个屏幕，停止拖动时再改回来，就可以避免。
+    # 拖动时会出现白边(位置的更新比window_set_mouse_passthrough至少慢一帧)，改为拖动时nopass_area为整个屏幕，停止拖动时再改回来，就可以避免。
     # DisplayServer.window_set_mouse_passthrough([])
     EventBus.set_fullscreen_nopass_area()
     # 同时拖动多个时会闪白屏, 可能是DisplayServer.window_set_mouse_passthrough([])连续调用的导致的

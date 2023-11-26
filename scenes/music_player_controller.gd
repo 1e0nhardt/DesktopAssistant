@@ -1,5 +1,7 @@
 extends PanelContainer
 
+signal closed
+
 @onready var volume_slider: HSlider = %VolumeSlider
 @onready var item_list: ItemList = %ItemList
 @onready var draggable_component = $DraggableComponent
@@ -95,7 +97,7 @@ func _on_list_button_pressed():
 
 
 func _on_quit_button_pressed():
-    close()
+    closed.emit()
 
 
 func _on_item_list_item_activated(index):

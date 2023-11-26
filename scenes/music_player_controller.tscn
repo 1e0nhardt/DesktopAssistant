@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://cvgg41oimyeus" path="res://scenes/components/draggable_component.tscn" id="1_tggld"]
 [ext_resource type="Shader" path="res://scenes/music_player_controller.gdshader" id="2_dp43n"]
 [ext_resource type="Material" uid="uid://cbc67egooc2qr" path="res://scenes/custom_windows/tune_icon_color.tres" id="4_etx4t"]
-[ext_resource type="Texture2D" uid="uid://dkhww4r0w1c8g" path="res://assets/icons/volume.png" id="5_f1juw"]
-[ext_resource type="Texture2D" uid="uid://bs1fgecqa30hw" path="res://assets/icons/next.png" id="5_l1sm3"]
+[ext_resource type="Texture2D" uid="uid://bfjs6kmlrjwxf" path="res://assets/icons/arrow-right.png" id="5_4x8av"]
 [ext_resource type="Texture2D" uid="uid://ci5rl37v81gof" path="res://assets/icons/stop.png" id="6_8jf8r"]
-[ext_resource type="Texture2D" uid="uid://dnsxomvsoki51" path="res://assets/icons/list.svg" id="6_dqf8e"]
-[ext_resource type="Texture2D" uid="uid://butrujyugbbbn" path="res://assets/icons/cross.png" id="7_idrhl"]
+[ext_resource type="Texture2D" uid="uid://cu5alnggb4oko" path="res://assets/icons/volume-fill.png" id="7_dg6bu"]
+[ext_resource type="Texture2D" uid="uid://c5n2mk7bcy2jv" path="res://assets/icons/file.png" id="8_f35fe"]
+[ext_resource type="Texture2D" uid="uid://b60or5f03vct7" path="res://assets/icons/close.png" id="9_fh3kq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m5dan"]
 shader = ExtResource("2_dp43n")
@@ -56,7 +56,7 @@ layout_mode = 2
 material = ExtResource("4_etx4t")
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
-texture_normal = ExtResource("5_l1sm3")
+texture_normal = ExtResource("5_4x8av")
 ignore_texture_size = true
 stretch_mode = 0
 flip_h = true
@@ -74,7 +74,7 @@ stretch_mode = 0
 material = ExtResource("4_etx4t")
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
-texture_normal = ExtResource("5_l1sm3")
+texture_normal = ExtResource("5_4x8av")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -82,7 +82,7 @@ stretch_mode = 0
 material = ExtResource("4_etx4t")
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
-texture_normal = ExtResource("5_f1juw")
+texture_normal = ExtResource("7_dg6bu")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -90,7 +90,7 @@ stretch_mode = 0
 material = ExtResource("4_etx4t")
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
-texture_normal = ExtResource("6_dqf8e")
+texture_normal = ExtResource("8_f35fe")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -98,7 +98,7 @@ stretch_mode = 0
 material = ExtResource("4_etx4t")
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
-texture_normal = ExtResource("7_idrhl")
+texture_normal = ExtResource("9_fh3kq")
 ignore_texture_size = true
 stretch_mode = 0
 

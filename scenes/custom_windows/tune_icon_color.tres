@@ -4,4 +4,6 @@
 
 [resource]
 shader = ExtResource("1_h7a3b")
-shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/color = Color(0.8, 0.448, 0.16, 1)
+shader_parameter/bg_color = Color(0.196078, 0.392157, 0.65098, 1)
+shader_parameter/icon_scale = 1.2

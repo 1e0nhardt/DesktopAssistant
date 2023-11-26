@@ -5,10 +5,10 @@ extends PanelContainer
 @onready var important_button: TextureButton = $HBoxContainer/ImportantButton
 
 var item_data: Global.TodoItem
-var not_important_icon := preload("res://assets/icons/collection.svg")
-var important_icon := preload("res://assets/icons/collection_selected.svg")
-var todo_icon := preload("res://assets/icons/icon_circle.png")
-var done_icon := preload("res://assets/icons/wancheng.png")
+var not_important_icon := preload("res://assets/icons/favorite.png")
+var important_icon := preload("res://assets/icons/favorite-filling.png")
+var todo_icon := preload("res://assets/icons/circle.png")
+var done_icon := preload("res://assets/icons/success.png")
 
 
 func set_data(data: Global.TodoItem):

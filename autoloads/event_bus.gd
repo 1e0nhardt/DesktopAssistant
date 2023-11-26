@@ -1,10 +1,21 @@
 extends Node
 
 signal joints_updating
+signal countdown_pressed
+signal clock_pressed
 
 
 func emit_joints_updating():
     joints_updating.emit()
+
+    
+func emit_countdown_pressed():
+    countdown_pressed.emit()
+
+
+func emit_clock_pressed():
+    clock_pressed.emit()
+
 
 class NopassAreaNaive:
     var nopass_area_dict: Dictionary = {}

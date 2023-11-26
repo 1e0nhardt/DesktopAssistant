@@ -2,7 +2,10 @@ extends Node
 
 const music_file_directory = "C:/Users/hwk/Music/CloudMusic"
 
+@export var sound_effects: Array[AudioStream]
+
 @onready var mucis_stream_player: AudioStreamPlayer = $MusicPlayer
+@onready var sfx_player: AudioStreamPlayer = $SfxPlayer
 
 var music_player: MusicPlayer
 var _music_player_inited := false
@@ -13,6 +16,12 @@ func load_mp3(path: String):
     var sound = AudioStreamMP3.new()
     sound.data = file.get_buffer(file.get_length())
     return sound
+
+
+func play_sound(id: int):
+    sfx_player.stream = sound_effects[id]
+    sfx_player.play()
+    get_tree().create_timer(3.0).timeout.connect(func (): sfx_player.stop())
 
 
 class MusicPlayer:

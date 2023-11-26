@@ -14,7 +14,7 @@ corner_detail = 1
 [node name="TagButton" type="Button"]
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_78pjs")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_sih7l")
 text = "标签"
 script = ExtResource("2_hc58c")

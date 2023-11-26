@@ -1,0 +1,182 @@
+[gd_scene load_steps=12 format=3 uid="uid://bbu0ln4q462km"]
+
+[ext_resource type="Script" path="res://scenes/custom_windows/card_edit_window.gd" id="1_5rmf0"]
+[ext_resource type="Material" uid="uid://cbc67egooc2qr" path="res://scenes/custom_windows/tune_icon_color.tres" id="3_m8a2n"]
+[ext_resource type="Texture2D" uid="uid://cyog5336bcjgv" path="res://assets/icons/add-bold.png" id="4_aviay"]
+[ext_resource type="Script" path="res://scenes/custom_windows/handles.gd" id="4_edeyu"]
+[ext_resource type="Texture2D" uid="uid://bevm2oln4sd7f" path="res://assets/icons/ashbin.png" id="5_b35k3"]
+[ext_resource type="PackedScene" uid="uid://cvgg41oimyeus" path="res://scenes/components/draggable_component.tscn" id="5_gwd65"]
+[ext_resource type="FontFile" uid="uid://d25q71ll6pxra" path="res://assets/fonts/Source_Han_Sans_SC_Normal_Normal.otf" id="6_pdvao"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1dx5"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0nig"]
+content_margin_left = 4.0
+bg_color = Color(0.2573, 0.273988, 0.31, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.51, 0.51, 0.51, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_welij"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.160784, 0.172549, 0.2, 1)
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktddn"]
+
+[node name="CardEditWindow" type="Control"]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 400.0
+mouse_filter = 2
+script = ExtResource("1_5rmf0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h1dx5")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TopBar/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="SaveButton" type="TextureButton" parent="VBoxContainer/TopBar/MarginContainer/HBoxContainer"]
+material = ExtResource("3_m8a2n")
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = ExtResource("4_aviay")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="CloseButton" type="TextureButton" parent="VBoxContainer/TopBar/MarginContainer/HBoxContainer"]
+material = ExtResource("3_m8a2n")
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = ExtResource("5_b35k3")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/TopBar/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_w0nig")
+placeholder_text = "add title here..."
+middle_mouse_paste_enabled = false
+
+[node name="Content" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/Content"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("6_pdvao")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_welij")
+theme_override_styles/focus = SubResource("StyleBoxFlat_welij")
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+caret_blink = true
+
+[node name="StatusBar" type="PanelContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ktddn")
+
+[node name="Label" type="Label" parent="VBoxContainer/StatusBar"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Version 0.0.1"
+
+[node name="Handles" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_edeyu")
+
+[node name="Bottom" type="Control" parent="Handles"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 9
+
+[node name="Right" type="Control" parent="Handles"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_default_cursor_shape = 10
+
+[node name="Corner" type="Control" parent="Handles"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 12
+
+[node name="DraggableComponent" parent="." instance=ExtResource("5_gwd65")]
+
+[connection signal="pressed" from="VBoxContainer/TopBar/MarginContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TopBar/MarginContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="gui_input" from="Handles/Bottom" to="Handles" method="_on_bottom_gui_input"]
+[connection signal="gui_input" from="Handles/Right" to="Handles" method="_on_right_gui_input"]
+[connection signal="gui_input" from="Handles/Corner" to="Handles" method="_on_corner_gui_input"]

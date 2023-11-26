@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://xp1tsd2x5dby"]
+[gd_scene load_steps=3 format=3 uid="uid://xp1tsd2x5dby"]
 
 [ext_resource type="Script" path="res://autoloads/audio_manager.gd" id="1_f8ju1"]
+[ext_resource type="AudioStream" uid="uid://djivttoyywr8" path="res://assets/sound/metal_bell.wav" id="2_6cu2a"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_f8ju1")
+sound_effects = Array[AudioStream]([ExtResource("2_6cu2a")])
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"MusicPlayer"
+
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="."]

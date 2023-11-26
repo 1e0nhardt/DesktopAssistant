@@ -1,87 +1,143 @@
-[gd_scene load_steps=11 format=3 uid="uid://dekdo7vpyjvey"]
+[gd_scene load_steps=12 format=3 uid="uid://dekdo7vpyjvey"]
 
 [ext_resource type="Script" path="res://scenes/function_bar.gd" id="1_2vxni"]
+[ext_resource type="Texture2D" uid="uid://n6ca5hwfvcdb" path="res://assets/icons/comment.png" id="3_8nd54"]
 [ext_resource type="Material" uid="uid://cbc67egooc2qr" path="res://scenes/custom_windows/tune_icon_color.tres" id="3_htquj"]
-[ext_resource type="Texture2D" uid="uid://cjaq2vkc10lbu" path="res://assets/icons/wodefankui.png" id="3_r83vu"]
-[ext_resource type="Texture2D" uid="uid://dnsxomvsoki51" path="res://assets/icons/list.svg" id="4_h68vq"]
-[ext_resource type="Texture2D" uid="uid://c3pwbf1xfa7ru" path="res://assets/icons/role.svg" id="5_20tjw"]
-[ext_resource type="Texture2D" uid="uid://c1f8avwm3p740" path="res://assets/icons/right.svg" id="6_vxxlb"]
-[ext_resource type="Texture2D" uid="uid://bmpq8c5d167ng" path="res://assets/icons/clock.png" id="7_2yotn"]
-[ext_resource type="Texture2D" uid="uid://b3n3l5ntimm30" path="res://assets/icons/xiaoxizhongxin.png" id="8_3rmd0"]
-[ext_resource type="Texture2D" uid="uid://cnqb0vknm18ai" path="res://assets/icons/xiangyoujiantou.png" id="9_qgd2p"]
-[ext_resource type="Texture2D" uid="uid://di6nnkf3d6vus" path="res://assets/icons/cuowu.png" id="10_fx8uf"]
+[ext_resource type="Texture2D" uid="uid://bfx2mokrudeo0" path="res://assets/icons/complete.png" id="4_oaegq"]
+[ext_resource type="Texture2D" uid="uid://c7dxsw13vvfem" path="res://assets/icons/edit.png" id="5_owxq5"]
+[ext_resource type="Texture2D" uid="uid://ccifqhjx42ilb" path="res://assets/icons/music.png" id="6_v0n5b"]
+[ext_resource type="Texture2D" uid="uid://dl4qn2rxe762r" path="res://assets/icons/timer.png" id="7_pplvo"]
+[ext_resource type="Texture2D" uid="uid://cbdocvu0lso7i" path="res://assets/icons/hourglass_outlined.png" id="8_p1nud"]
+[ext_resource type="Texture2D" uid="uid://cfwohlpdvji2m" path="res://assets/icons/setting.png" id="9_cthy0"]
+[ext_resource type="Texture2D" uid="uid://b60or5f03vct7" path="res://assets/icons/close.png" id="10_rody1"]
 
-[node name="FunctionBar" type="VBoxContainer"]
-custom_minimum_size = Vector2(24, 200)
-theme_override_constants/separation = 1
+[sub_resource type="Curve2D" id="Curve2D_tvn7a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 16, 112, 0, 0, 0, 0, 24, 72, 0, 0, 0, 0, 48, 40, 0, 0, 0, 0, 88, 16, 0, 0, 0, 0, 136, 16, 0, 0, 0, 0, 176, 40, 0, 0, 0, 0, 200, 72, 0, 0, 0, 0, 208, 112)
+}
+point_count = 8
+
+[node name="FunctionBar" type="Control"]
+custom_minimum_size = Vector2(220, 220)
+layout_mode = 3
+anchors_preset = 0
+offset_top = 16.0
+offset_right = 220.0
+offset_bottom = 236.0
 script = ExtResource("1_2vxni")
 
 [node name="SaySomething" type="TextureButton" parent="."]
 material = ExtResource("3_htquj")
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture_normal = ExtResource("3_r83vu")
+offset_right = 24.0
+offset_bottom = 24.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("3_8nd54")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="TodoList" type="TextureButton" parent="."]
 material = ExtResource("3_htquj")
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture_normal = ExtResource("4_h68vq")
+offset_top = 25.0
+offset_right = 24.0
+offset_bottom = 49.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("4_oaegq")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Kanban" type="TextureButton" parent="."]
+[node name="Card" type="TextureButton" parent="."]
 material = ExtResource("3_htquj")
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture_normal = ExtResource("5_20tjw")
+offset_top = 50.0
+offset_right = 24.0
+offset_bottom = 74.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("5_owxq5")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="MusicPlayer" type="TextureButton" parent="."]
 material = ExtResource("3_htquj")
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture_normal = ExtResource("6_vxxlb")
+offset_top = 75.0
+offset_right = 24.0
+offset_bottom = 99.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("6_v0n5b")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Clock" type="TextureButton" parent="."]
 material = ExtResource("3_htquj")
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture_normal = ExtResource("7_2yotn")
+offset_top = 100.0
+offset_right = 24.0
+offset_bottom = 124.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("7_pplvo")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Chat" type="TextureButton" parent="."]
+[node name="CountDown" type="TextureButton" parent="."]
 material = ExtResource("3_htquj")
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture_normal = ExtResource("8_3rmd0")
+offset_top = 125.0
+offset_right = 24.0
+offset_bottom = 149.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("8_p1nud")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Hide" type="TextureButton" parent="."]
+[node name="Settings" type="TextureButton" parent="."]
 material = ExtResource("3_htquj")
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture_normal = ExtResource("9_qgd2p")
+offset_top = 150.0
+offset_right = 24.0
+offset_bottom = 174.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("9_cthy0")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Quit" type="TextureButton" parent="."]
 material = ExtResource("3_htquj")
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture_normal = ExtResource("10_fx8uf")
+offset_top = 175.0
+offset_right = 24.0
+offset_bottom = 199.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("10_rody1")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="Path2D" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_tvn7a")
+
 [connection signal="pressed" from="SaySomething" to="." method="_on_say_something_pressed"]
 [connection signal="pressed" from="TodoList" to="." method="_on_todo_list_pressed"]
+[connection signal="pressed" from="Card" to="." method="_on_card_pressed"]
 [connection signal="pressed" from="MusicPlayer" to="." method="_on_music_player_pressed"]
-[connection signal="pressed" from="Hide" to="." method="_on_hide_pressed"]
+[connection signal="pressed" from="Clock" to="." method="_on_clock_pressed"]
+[connection signal="pressed" from="CountDown" to="." method="_on_count_down_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
